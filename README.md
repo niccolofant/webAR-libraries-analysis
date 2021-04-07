@@ -9,5 +9,5 @@ analysis of the main js libraries for developing AR experiences
 - Argon.js
 - Tracking.js
 
-##how to run
+# how to run
 go into /apps and lunch "index.html"
