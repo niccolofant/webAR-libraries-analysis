@@ -1,0 +1,45 @@
+<head>
+    <title>
+        FaceTracker + ThreeJS
+    </title>
+
+    <script src="script.js"></script>
+    <script src="../../Libraries/TrackingJS/build/tracking-min.js"></script>
+    <script src="../../Libraries/TrackingJS/build/data/face-min.js"></script>
+    <script src="../../Libraries/ThreeJS/examples/js/libs/dat.gui.min.js"></script>
+    <script src="../../Libraries/TrackingJS/examples/assets/stats.min.js"></script>
+    <script src="../../Libraries/ThreeJS/build/three.min.js"></script>
+
+    <style>
+        video, canvas {
+            margin-left: 27.5vw;
+            margin-top: 2vh;
+            position: absolute;
+        }
+
+        #title{
+            position: absolute;
+            margin-top: 60vh;
+            margin-left: 40vw
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tracking">
+        <video id="video" width="640" height="480" autoplay="autoplay" playsinline="playsinline" ></video>
+        <canvas id="canvas" width="640" height="480"></canvas>
+    </div>
+
+    <div id="title" >
+        <h1>FaceTracker + ThreeJS</h1>
+
+        <form>
+            <input type="radio" id="faceTracker" name="tracker" value="faceTracker">
+            <label for="faceTracker">Face Tracker</label>
+            
+            <input type="radio" id="colorTracker" name="tracker" value="colorTracker">
+            <label for="colorTracker">Color Tracker</label>
+        </form> 
+    </div>
+</body>

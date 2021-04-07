@@ -1,0 +1,143 @@
+
+
+<head>
+<script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+<script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+<script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.min.js"></script>
+</head>
+
+<body>
+
+<div>
+  <a-scene stats
+          embedded 
+          arjs="sourceType: webcam; debugUIEnabled: false;"
+          vr-mode-ui="enabled: false"
+          id="scene">
+          
+    <a-assets timeout = "5000">
+
+      <a-asset-item id="stacy" src="../../utils/stacy/stacy_lightweight.glb"></a-asset-item>
+      
+      <a-asset-item id="plant" src="../../utils/plant.gltf"></a-asset-item>
+    
+      <!--<audio id="sound" src="../../utils/sugar.mp3" preload="auto"></audio>-->
+    </a-assets>
+
+    <a-marker id="hiroMarker" preset="hiro">
+
+      <a-entity id="stacyModel" 
+                gltf-model="#stacy" 
+                texture 
+                rand 
+                animation-mixer="clip: idle  ">
+      </a-entity>
+
+      <a-entity id="flight" position = "0 2 2">
+        <a-light type="point" intensity="10" penumbra="0.5" distance="5" decay="2" color="#ffffff"></a-light>    
+      </a-entity>
+      
+      <a-entity id="blight" position = "0 2 -2">
+        <a-light type="point" intensity="10" penumbra="0.5" distance="5" decay="2" color="#ffffff"></a-light>
+      </a-entity>
+
+    </a-marker>
+
+    <a-marker id="kanjiMarker" preset="kanji">
+
+      <a-entity id="plantModel" gltf-model="#plant" scale="2 2 2"></a-entity>
+
+      <a-entity id="flight" position = "0 5 2">
+        <a-light type="point" intensity="1" penumbra="0.5" distance="2" decay="2" color="#ffffff"></a-light>    
+      </a-entity>
+      
+      <a-entity id="blight" position = "0 5 -2">
+        <a-light type="point" intensity="1" penumbra="0.5" distance="2" decay="2" color="#ffffff"></a-light>
+      </a-entity>
+
+    </a-marker>
+
+    
+    <a-entity camera></a-entity>
+
+  </a-scene>
+  
+</div>
+
+<div class="buttons">
+
+  <!--<button id="randomizer">random animation</button>
+  <button id="hiroMarker">AFrame with preset hiro marker</button>
+  <button id="customMarker">AFrame with custom marker</button>
+  <button id="imageTrack">AFrame with image tracking</button>
+  <button id="customMarker">AFrame with custom marker</button>-->
+</div>
+
+<script>
+    AFRAME.registerComponent("texture", {
+    init: function(){
+      let el = this.el;
+      el.addEventListener("model-loaded", e =>{
+        let model3D = el.getObject3D('mesh');
+        if(!model3D){
+          return;
+        }
+        
+        var stacy_txt = new THREE.TextureLoader().load("https://s3-us-west-2.amazonaws.com/s.cdpn.io/1376484/stacy.jpg");
+        stacy_txt.flipY = false;
+        model3D.traverse(function(node){
+          if(node.isMesh){
+            node.material.skinning = true;
+            node.material.color = new THREE.Color(0xffffff);
+            node.material.map = stacy_txt;
+            //console.log(node.material.map);
+          }
+        });
+      });
+    }
+    });
+
+    AFRAME.registerComponent("rand", {
+      init: function(){
+
+        let el = this.el;
+        el.addEventListener("model-loaded", e =>{
+          let model3D = el.getObject3D('mesh');
+          if(!model3D){
+            return;
+          }
+          console.log(model3D.animations);
+        var button = document.getElementById("scene");
+        var stacy = document.getElementById("stacyModel");
+        button.addEventListener("click", e => {
+          var randAnim = model3D.animations[Math.floor(Math.random() * 8)];
+          stacy.setAttribute("animation-mixer", "clip: " + model3D.animations[Math.floor(Math.random() * 6) + 1].name);
+        });
+      });
+    }
+  });
+/*
+  AFRAME.registerComponent("soundhandler", {
+    tick: function () {
+        var button = document.getElementById("scene");
+        var sound = document.getElementById("sound");
+        var active = false;
+        button.addEventListener("click", e => {
+          active = !active;
+          console.log(active);
+          if(active){
+            sound.play();
+          }else{
+            sound.pause();
+          }
+     });
+    }
+});
+
+   */
+</script>
+  
+</body>
+
+
+

@@ -1,0 +1,37 @@
+
+<html>
+<head>
+    <title>
+        JSARToolKit + ThreeJS (barcode Markers)
+    </title>
+    
+    <script src="../../Libraries/JSARToolKit/JSARToolKit.min.js"></script>
+    <script src="../../Libraries/ThreeJS/build/three.min.js" ></script>
+    <script src="../../Libraries/ThreeJS/examples/js/loaders/GLTFLoader.js"></script>
+    <script src="https://github.com/mrdoob/stats.js/blob/master/build/stats.min.js"></script>
+    <script src="jsartoolkitScript.js"></script>
+</head>
+<body>
+    <style>
+    #outcanvas{
+        -webkit-transform: scaleX(-1);
+        transform: scaleX(-1);
+      }
+
+    </style>
+    
+    <video autoplay="autoplay" playsinline="playsinline" id="hiddenVideo"></video> 
+	<canvas id="hiddenCanvas"></canvas>
+	<canvas id="drawingCanvas"></canvas>
+	<div  style="text-align: center; width: 100vw">
+        <canvas id="outCanvas"></canvas>
+        <h1>JSARToolKit Marker Example</h1>
+    </div>
+
+    <div>
+        <button id="randomizer">randomize</button>
+    </div>
+
+    
+</body>
+</html>
