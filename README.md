@@ -1,4 +1,4 @@
-# webAR-libraries-analysis
+# webAR libraries analysis
 analysis of the main js libraries for developing AR experiences
 - JSARToolKit2
 - JSARToolKit5
