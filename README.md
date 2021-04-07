@@ -10,4 +10,4 @@ analysis of the main js libraries for developing AR experiences
 - Tracking.js
 
 # how to run
-go into /apps and lunch "index.html"
+go into /apps and choose a library
