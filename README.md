@@ -8,3 +8,6 @@ analysis of the main js libraries for developing AR experiences
 - Babylon.js
 - Argon.js
 - Tracking.js
+
+##how to run
+go into /apps and lunch "index.html"
