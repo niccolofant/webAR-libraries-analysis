@@ -1,3 +1,4 @@
+
 window.ARThreeOnLoad = function() {
 	ARController.getUserMediaThreeScene({
 		maxARVideoSize: 320, 
